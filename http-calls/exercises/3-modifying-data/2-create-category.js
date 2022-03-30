@@ -6,11 +6,16 @@
  */
 
  async function createNewCategory(name, description) {
-  const path = _;
-  const body = _;
+  const path = 'categories';
+  const body = {
+    "data":{
+      "name":name,
+      "description":description
+    }
+  };
   const url = `http://localhost:1337/api/${path}`
   const response = await fetch(url, {
-    method: _, // *GET, POST, PUT, DELETE, etc.
+    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json'
     },

@@ -6,11 +6,15 @@
  */
 
 async function updateProductName(productId, newName) {
-  const path = _;
-  const body = _;
+  const path = `products/${productId}`;
+  const body = {
+    "data":{
+      "name":newName
+    }
+  };
   const url = `http://localhost:1337/api/${path}`
   const response = await fetch(url, {
-    method: _, // *GET, POST, PUT, DELETE, etc.
+    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json'
     },
