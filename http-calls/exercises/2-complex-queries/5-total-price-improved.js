@@ -8,7 +8,12 @@
  async function ex4() {
    const query = qs.stringify(
    {
-       _
+     fields:['price'],
+     filters:{
+       outOfStock:{
+         $eq:false
+       }
+     }
    }, 
    {
      encodeValuesOnly: true,
@@ -16,9 +21,12 @@
    console.log("The query string", query);
  
    // call the matching endpoint and include the querystring after the ?
-   const baseUrl = _;
-   const response = await fetch(`${_}?${query}`);
+   const baseUrl = `http://localhost:1337/api/products`;
+   const response = await fetch(`${baseUrl}?${query}`);
    const result = await response.json();
-   _
+   const totalCost = result.data.reduce((totalPrice,currentPrice)=>{
+     return totalPrice+currentPrice.attributes.price;
+   },0)
+   console.log(`The total cost if someone would buy one of every item in stock is €${totalCost}`);
  }
  ex4();

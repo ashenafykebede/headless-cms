@@ -14,4 +14,4 @@ async function removeProduct(productId) {
    return response.json();
 }
 
-removeProduct(18)
+removeProduct(19)
